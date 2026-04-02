@@ -24,9 +24,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - `ruff check .` and `black --check .` pass
 
 ### 0.2 Security baseline
-- [ ] Add secrets policy to README (never commit API keys)
-- [ ] Add `.gitignore` rules for `.env`, credentials, exported data
-- [ ] Add basic secret scanning step in CI
+- [x] Add secrets policy to README (never commit API keys)
+- [x] Add `.gitignore` rules for `.env`, credentials, exported data
+- [x] Add basic secret scanning step in CI
 
 **DoD**
 - CI fails if obvious secrets are committed

@@ -3,5 +3,20 @@ __pycache__/
 *.egg-info/
 .venv/
 .env
+.env.*
+!.env.example
 .pytest_cache/
 .ruff_cache/
+
+# Credentials and secret material
+credentials/
+secrets/
+*.pem
+*.key
+*.p12
+
+# Exported/generated data
+exports/
+output/
+*.sqlite
+*.db
