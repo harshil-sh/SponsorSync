@@ -7,12 +7,11 @@ import csv
 import io
 import json
 import sqlite3
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
 from urllib.request import urlopen
-
 
 COMPANY_COLUMN_CANDIDATES = ("company", "company_name", "sponsor", "sponsor_name")
 
@@ -73,7 +72,9 @@ def fetch_latest_licensed_sponsors(csv_url: str) -> list[SponsorRecord]:
     return records
 
 
-def store_sponsors_in_sqlite(records: Iterable[SponsorRecord], db_path: str | Path) -> int:
+def store_sponsors_in_sqlite(
+    records: Iterable[SponsorRecord], db_path: str | Path
+) -> int:
     """Store records in SQLite, preserving duplicates."""
     connection = sqlite3.connect(str(db_path))
     try:

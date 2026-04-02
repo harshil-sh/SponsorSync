@@ -12,11 +12,11 @@ This task list turns the implementation plan into an execution backlog the team 
 ## Epic 0: Project Setup & Governance
 
 ### 0.1 Repository and environment bootstrap
-- [ ] Create Python package structure (`src/`, `tests/`, `scripts/`, `configs/`)
-- [ ] Add `.env.example` with non-secret placeholders
-- [ ] Add dependency management (`pyproject.toml`)
-- [ ] Add lint/format config (ruff/black)
-- [ ] Add pre-commit hooks
+- [x] Create Python package structure (`src/`, `tests/`, `scripts/`, `configs/`)
+- [x] Add `.env.example` with non-secret placeholders
+- [x] Add dependency management (`pyproject.toml`)
+- [x] Add lint/format config (ruff/black)
+- [x] Add pre-commit hooks
 
 **Definition of Done (DoD)**
 - `pip install -e .` works
