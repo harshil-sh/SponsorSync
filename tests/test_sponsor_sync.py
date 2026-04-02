@@ -1,7 +1,7 @@
 import sqlite3
+import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import unittest
 
 from sponsor_sync import normalize_company_name, sync_licensed_sponsors
 
@@ -38,7 +38,8 @@ class SponsorSyncTests(unittest.TestCase):
                 self.assertEqual(duplicate_count, 2)
 
                 normalized = connection.execute(
-                    "SELECT normalized_company_name FROM licensed_sponsors WHERE company_name = ?",
+                    "SELECT normalized_company_name FROM licensed_sponsors "
+                    "WHERE company_name = ?",
                     ("Byte\x0bWorks",),
                 ).fetchone()[0]
                 self.assertEqual(normalized, "ByteWorks")
