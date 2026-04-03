@@ -56,6 +56,38 @@ class AppConfig(BaseSettings):
         default="rules.default.json",
         validation_alias=AliasChoices("SPONSORSYNC_RULES_FILE_NAME", "RULES_FILE_NAME"),
     )
+    claude_max_tokens_per_call: int = Field(
+        default=800,
+        gt=0,
+        le=4096,
+        validation_alias=AliasChoices(
+            "SPONSORSYNC_CLAUDE_MAX_TOKENS_PER_CALL",
+            "CLAUDE_MAX_TOKENS_PER_CALL",
+        ),
+    )
+    claude_run_budget_usd: float = Field(
+        default=1.0,
+        gt=0,
+        validation_alias=AliasChoices(
+            "SPONSORSYNC_CLAUDE_RUN_BUDGET_USD", "CLAUDE_RUN_BUDGET_USD"
+        ),
+    )
+    claude_input_cost_per_million_tokens: float = Field(
+        default=3.0,
+        ge=0,
+        validation_alias=AliasChoices(
+            "SPONSORSYNC_CLAUDE_INPUT_COST_PER_MILLION_TOKENS",
+            "CLAUDE_INPUT_COST_PER_MILLION_TOKENS",
+        ),
+    )
+    claude_output_cost_per_million_tokens: float = Field(
+        default=15.0,
+        ge=0,
+        validation_alias=AliasChoices(
+            "SPONSORSYNC_CLAUDE_OUTPUT_COST_PER_MILLION_TOKENS",
+            "CLAUDE_OUTPUT_COST_PER_MILLION_TOKENS",
+        ),
+    )
 
     @property
     def environment_override_path(self) -> Path:

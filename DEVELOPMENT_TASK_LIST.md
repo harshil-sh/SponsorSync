@@ -82,9 +82,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - `extract_candidate_profile(cv_text)` returns validated structured profile
 
 ### 2.3 Token/cost controls
-- [ ] Add max tokens per call safeguards
-- [ ] Add per-run budget guardrails
-- [ ] Add logging for prompt/response metadata (redacted)
+- [x] Add max tokens per call safeguards
+- [x] Add per-run budget guardrails
+- [x] Add logging for prompt/response metadata (redacted)
 
 **DoD**
 - Exceeding configured budget fails gracefully with actionable error

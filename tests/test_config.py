@@ -13,6 +13,8 @@ def test_app_config_loads_defaults_and_rules() -> None:
 
     assert config.environment == "development"
     assert config.log_level == "DEBUG"
+    assert config.claude_max_tokens_per_call == 800
+    assert config.claude_run_budget_usd == 1.0
 
     rules = config.load_rules_config()
     assert rules.salary_threshold_gbp == 45000
@@ -102,3 +104,10 @@ def test_rules_config_validation_has_clear_error(tmp_path, monkeypatch) -> None:
 
     with pytest.raises(ValueError, match="Invalid rules config file"):
         AppConfig().load_rules_config()
+
+
+def test_app_config_rejects_invalid_claude_budget(monkeypatch) -> None:
+    monkeypatch.setenv("CLAUDE_RUN_BUDGET_USD", "0")
+
+    with pytest.raises(ValueError):
+        AppConfig.load()
