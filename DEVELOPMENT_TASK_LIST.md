@@ -66,9 +66,9 @@ This task list turns the implementation plan into an execution backlog the team 
 ## Epic 2: CV Ingestion and Profile Extraction (Claude)
 
 ### 2.1 CV ingestion pipeline
-- [ ] Implement CV file loader (PDF/DOCX/TXT)
-- [ ] Add text extraction adapters with fallback order
-- [ ] Add basic cleaning and section segmentation
+- [x] Implement CV file loader (PDF/DOCX/TXT)
+- [x] Add text extraction adapters with fallback order
+- [x] Add basic cleaning and section segmentation
 
 **DoD**
 - Sample CV fixtures parse into clean text
