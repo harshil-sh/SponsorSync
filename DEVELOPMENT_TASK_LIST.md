@@ -74,9 +74,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - Sample CV fixtures parse into clean text
 
 ### 2.2 Claude profile extraction
-- [ ] Implement Claude client wrapper
-- [ ] Create CV→Profile prompt template with strict JSON output
-- [ ] Add schema validation + retry policy for malformed responses
+- [x] Implement Claude client wrapper
+- [x] Create CV→Profile prompt template with strict JSON output
+- [x] Add schema validation + retry policy for malformed responses
 
 **DoD**
 - `extract_candidate_profile(cv_text)` returns validated structured profile
