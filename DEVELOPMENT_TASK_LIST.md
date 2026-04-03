@@ -54,9 +54,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - Schema validation tested
 
 ### 1.3 Utility modules
-- [ ] Salary parsing utility (annualize salary in GBP)
-- [ ] Contract-type normalization utility
-- [ ] Title normalization + synonym expansion
+- [x] Salary parsing utility (annualize salary in GBP)
+- [x] Contract-type normalization utility
+- [x] Title normalization + synonym expansion
 
 **DoD**
 - Utility unit tests cover expected UK salary formats and edge cases
