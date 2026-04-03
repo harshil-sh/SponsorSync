@@ -40,6 +40,13 @@ class AppConfig(BaseSettings):
             "ANTHROPIC_API_KEY",
         ),
     )
+    reed_api_key: str | None = Field(
+        default=None,
+        validation_alias=AliasChoices(
+            "SPONSORSYNC_REED_API_KEY",
+            "REED_API_KEY",
+        ),
+    )
     database_url: str = Field(
         default="sqlite:///./sponsorsync.db",
         validation_alias=AliasChoices("SPONSORSYNC_DATABASE_URL", "DATABASE_URL"),

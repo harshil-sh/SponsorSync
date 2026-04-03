@@ -101,7 +101,7 @@ This task list turns the implementation plan into an execution backlog the team 
 - New connectors can be added with minimal boilerplate
 
 ### 3.2 API connector #1
-- [ ] Implement authentication and request signing if required
+- [x] Implement authentication and request signing if required
 - [ ] Add pagination + mapping to canonical schema
 - [ ] Add connector integration tests with mocked responses
 
