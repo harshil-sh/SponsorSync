@@ -24,7 +24,6 @@ def test_parse_salary_to_annual_gbp_for_common_uk_formats() -> None:
     assert shorthand.maximum_gbp == 60000
 
 
-
 def test_parse_salary_to_annual_gbp_handles_non_salary_inputs() -> None:
     non_numeric = parse_salary_to_annual_gbp("Competitive salary")
     assert non_numeric.minimum_gbp is None
@@ -35,13 +34,11 @@ def test_parse_salary_to_annual_gbp_handles_non_salary_inputs() -> None:
     assert non_gbp.maximum_gbp is None
 
 
-
 def test_normalize_contract_type() -> None:
     assert normalize_contract_type("Full-time permanent") == "permanent"
     assert normalize_contract_type("6 month contract") == "contract"
     assert normalize_contract_type("Part time") == "part_time"
     assert normalize_contract_type(None) == "unknown"
-
 
 
 def test_title_normalization_and_synonym_expansion() -> None:
