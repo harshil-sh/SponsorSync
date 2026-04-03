@@ -45,9 +45,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - Invalid config fails with clear errors
 
 ### 1.2 Canonical job schema
-- [ ] Implement canonical `JobPosting` model
-- [ ] Implement run metadata model (`RunMetrics`, `RunSummary`)
-- [ ] Add serializer/deserializer helpers
+- [x] Implement canonical `JobPosting` model
+- [x] Implement run metadata model (`RunMetrics`, `RunSummary`)
+- [x] Add serializer/deserializer helpers
 
 **DoD**
 - All connectors emit canonical model
