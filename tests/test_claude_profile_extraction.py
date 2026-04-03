@@ -4,7 +4,9 @@ import pytest
 
 from sponsor_sync.claude_profile_extraction import (
     CandidateProfile,
+    ClaudeBudgetExceededError,
     ClaudeClient,
+    ClaudeRunUsage,
     build_cv_profile_prompt,
 )
 
@@ -71,3 +73,63 @@ def test_extract_candidate_profile_rejects_empty_input() -> None:
 
     with pytest.raises(ValueError, match="cv_text must not be empty"):
         client.extract_candidate_profile("   ")
+
+
+def test_extract_candidate_profile_enforces_max_tokens_limit() -> None:
+    client = StubClaudeClient([], max_tokens=5000)
+
+    with pytest.raises(
+        ValueError, match="max_tokens exceeds configured per-call limit"
+    ):
+        client.extract_candidate_profile("Sample CV text")
+
+
+def test_extract_candidate_profile_enforces_run_budget() -> None:
+    valid_json = (
+        '{"core_skills":["Python"],"seniority_indicators":["Tech Lead"],'
+        '"domain_expertise":["Fintech"],"preferred_roles":["Principal Engineer"]}'
+    )
+    over_budget = {
+        "usage": {"input_tokens": 10000, "output_tokens": 20000},
+        "content": [{"type": "text", "text": valid_json}],
+    }
+    client = StubClaudeClient([over_budget], run_budget_usd=0.01)
+
+    with pytest.raises(
+        ClaudeBudgetExceededError, match="budget exceeded after request"
+    ):
+        client.extract_candidate_profile("Sample CV text")
+
+
+def test_extract_candidate_profile_fails_when_budget_already_spent() -> None:
+    client = StubClaudeClient(
+        [],
+        run_budget_usd=0.2,
+        run_usage=ClaudeRunUsage(estimated_cost_usd=0.2),
+    )
+
+    with pytest.raises(
+        ClaudeBudgetExceededError, match="budget exceeded before request"
+    ):
+        client.extract_candidate_profile("Sample CV text")
+
+
+def test_extract_candidate_profile_logs_redacted_metadata(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    valid_json = (
+        '{"core_skills":["Python"],"seniority_indicators":["Tech Lead"],'
+        '"domain_expertise":["Fintech"],"preferred_roles":["Principal Engineer"]}'
+    )
+    response = {
+        "usage": {"input_tokens": 123, "output_tokens": 45},
+        "content": [{"type": "text", "text": valid_json}],
+    }
+    client = StubClaudeClient([response])
+    cv_text = "Very private CV text with personal details"
+
+    with caplog.at_level("INFO"):
+        _ = client.extract_candidate_profile(cv_text)
+
+    assert "Claude profile extraction metadata" in caplog.text
+    assert cv_text not in caplog.text
