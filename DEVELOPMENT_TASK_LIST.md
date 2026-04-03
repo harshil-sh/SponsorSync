@@ -36,9 +36,9 @@ This task list turns the implementation plan into an execution backlog the team 
 ## Epic 1: Config, Domain Models, and Core Utilities
 
 ### 1.1 Config system
-- [ ] Implement strongly typed app config (Pydantic settings)
-- [ ] Add rules config file (titles, salary threshold, exclusions)
-- [ ] Support environment-specific overrides
+- [x] Implement strongly typed app config (Pydantic settings)
+- [x] Add rules config file (titles, salary threshold, exclusions)
+- [x] Support environment-specific overrides
 
 **DoD**
 - App starts with defaults and env overrides

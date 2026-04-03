@@ -1,0 +1,15 @@
+{
+  "allowed_titles": [
+    "senior software engineer",
+    "tech lead",
+    "principal engineer",
+    "principal developer"
+  ],
+  "salary_threshold_gbp": 45000,
+  "exclusion_keywords": [
+    "java tutor",
+    "sales",
+    "intern"
+  ],
+  "company_blacklist": []
+}
