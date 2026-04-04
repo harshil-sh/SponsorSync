@@ -122,9 +122,9 @@ This task list turns the implementation plan into an execution backlog the team 
 - [x] Add robots/TOS compliance checklist per source
 
 ### 4.2 Scraper connector #1
-- [ ] Build parser selectors for list + details pages
-- [ ] Normalize extracted fields to canonical schema
-- [ ] Add fixture-based parser tests
+- [x] Build parser selectors for list + details pages
+- [x] Normalize extracted fields to canonical schema
+- [x] Add fixture-based parser tests
 
 ### 4.3 Scraper resilience
 - [ ] Add fallback selectors / heuristic extraction
