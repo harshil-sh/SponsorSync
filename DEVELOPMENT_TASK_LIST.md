@@ -117,9 +117,9 @@ This task list turns the implementation plan into an execution backlog the team 
 ## Epic 4: Source Connectors (Web Scraping)
 
 ### 4.1 Scraper framework
-- [ ] Define scraper connector interface
-- [ ] Add throttling and backoff utility
-- [ ] Add robots/TOS compliance checklist per source
+- [x] Define scraper connector interface
+- [x] Add throttling and backoff utility
+- [x] Add robots/TOS compliance checklist per source
 
 ### 4.2 Scraper connector #1
 - [ ] Build parser selectors for list + details pages
